@@ -11,33 +11,32 @@ FOUNDATION_EXPORT void PVActivityLog(const char* file, const char* function, NSU
 /**
  After drag and dropping PVLogger.framework to your project add
  
-     #import <PVFoundation/PVLogger.h>
+     #import <AppInsight/AppInsight.h>
  
  to your Prefix.pch file.
  
  For simple logging you can use
  
-     PVLogInfo(@"Any NSString")
+     AI_Log(@"Any NSString")
  
  or
  
-     PVLogInfo([NSString @"Any %@ NSString", @"format"])
+     AI_Log([NSString @"Any %@ NSString", @"format"])
  
- If you wish to time parts of the code, you may want to use on of TagTimerStart and TagTimerEnd pairs.
+ If you wish to time parts of the code, you may want to use AI_LogTag and AI_StopTagTimer.
  
-     PVLogInfoTagTimerStart(@"Tag for sort operation", @"starting sort")
+     AI_LogTag(@"Bubble sort algorithm", @"custom message")
      for (...) {
          // Do very long sort
      }
-     PVLogInfoTagTimerEnd(@"Tag for sort operation", @"done sorting")
+     AI_LogTagStopTimer(@"Bubble sort algorithm")
  
- Note:  If two successive TimerStarts are logged with same Tag name, then both TimerStart and TimerEnd semantics
- will be applied, meaning that the second TimerStart will be interpreted as the TimerEnd of the previous TimerStart,
- and a TimerStart of a new elapsed time calculation will kickoff.
+ Note:  If two successive AI_LogTag are logged with same tag, then the second AI_LogTag will be interpreted 
+ as the AI_LogTagStopTimer of the previous AI_LogTag, and a AI_LogTag of a new elapsed time calculation will kickoff.
  
- Note 2: If TimerEnd is used without preious TimerStart for given tag, log request will be ignored.
+ Note 2: If AI_LogStopTagTimer is used without preious AI_LogTag for given tag, log request will be ignored.
  */
 
 #define AI_Log(...)   PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", @"NO TAG", YES, __VA_ARGS__)
 #define AI_LogTag(tag, ...) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, YES, __VA_ARGS__)
-#define AI_StopTagTimer(tag) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, NO, __VA_ARGS__)
+#define AI_LogTagStopTimer(tag) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, NO, __VA_ARGS__)
