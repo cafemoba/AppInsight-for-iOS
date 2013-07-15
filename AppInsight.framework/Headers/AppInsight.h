@@ -35,6 +35,7 @@ FOUNDATION_EXPORT void PVActivityLog(const char* file, const char* function, NSU
  as the AI_LogTagStopTimer of the previous AI_LogTag, and a AI_LogTag of a new elapsed time calculation will kickoff.
  
  Note 2: If AI_LogStopTagTimer is used without preious AI_LogTag for given tag, log request will be ignored.
+
  */
 
 #define AI_Log(...)   PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", @"NO TAG", YES, __VA_ARGS__)
