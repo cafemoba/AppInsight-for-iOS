@@ -40,4 +40,4 @@ FOUNDATION_EXPORT void PVActivityLog(const char* file, const char* function, NSU
 
 #define AI_Log(...)   PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", @"NO TAG", YES, __VA_ARGS__)
 #define AI_LogTag(tag, ...) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, YES, __VA_ARGS__)
-#define AI_LogTagStopTimer(tag) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, NO, __VA_ARGS__)
+#define AI_LogTagStopTimer(tag) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, NO, @"")
