@@ -26,21 +26,7 @@ Essentially there are three ways to log.
 
 ### Simple logging
 
-    - (IBAction)buy:(UIButton *)sender
-    {
-        // perform buy operation
-        if ([[[sender titleLabel] text] length]) {
-            AI_Log("Buy %@", [[sender titleLabel] text]);
-        } else {
-            AI_Log("Buy");
-        }
-    }
-
-### Grouping and Timers
-
-Grouping of log messages can be accomplished by taking advantage of the tagging feature. To time parts of your code, you can use `AI_LogTag(tag, ...)` and `AI_LogTagStopTimer(tag, ...)` pairs.
-
-So for example to log network status change you would do something like:
+To log network status change with [AFNetworking](https://github.com/AFNetworking/AFNetworking) you would do something like:
 
     - (void)networkStatusChanged:(AFNetworkReachabilityStatus)status
     {
@@ -56,7 +42,11 @@ So for example to log network status change you would do something like:
         }
     }
 
-or if you want to time how long it takes to fetch images you could do:
+### Grouping and Timers
+
+Grouping of log messages can be accomplished by taking advantage of the tagging feature. To time parts of your code, you should use both `AI_LogTag(tag, ...)` and `AI_LogTagStopTimer(tag, ...)`.
+
+If you want to time how long it takes to fetch images you could do:
 
     - (void)loadImageForPhotoURL:(NSURL *)photoURL completionBlock:(FlickrPhotoCompletionBlock) completionBlock
     {
@@ -78,6 +68,6 @@ or if you want to time how long it takes to fetch images you could do:
         [self enqueueHTTPRequestOperation:operation];
     }
 
-**NOTE:** If two successive `AI_LogTag(tag, ...)` are logged with the same Tag name, then both `AI_LogTag(tag, ...)` and `AI_LogTagStopTimer(tag, ...)` semantics  will be applied, meaning that the second `AI_LogTag(tag, ...)` will be interpreted as the `AI_LogTagStopTimer(tag, ...)` of the previous `AI_LogTag(tag, ...)`,  and a `AI_LogTag(tag, ...)` of a new elapsed time calculation will kickoff.
+**NOTE:** If two successive `AI_LogTag(tag, ...)` are logged with the same Tag name, then second call is interpreted as `AI_LogTagStopTimer(tag, ...)` for the first call before it's sent out. The count and elapsed time stats will reflect that appropriately.
 
-If `AI_LogTagStopTimer(tag, ...)` is used without a previous `AI_LogTag(tag, ...)` for a given tag then the log request will be ignored.
+**NOTE:** If `AI_LogTagStopTimer(tag, ...)` is used without a previous `AI_LogTag(tag, ...)` for a given tag then the log request will be ignored.
