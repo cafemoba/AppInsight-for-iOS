@@ -1,15 +1,29 @@
 AppInsight-for-iOS
 ==================
 
-AppInsight is usage, performance, usability tracking library that supplements [Cafe Moba](http://cafemoba.com) analytics and reporting tool.
-
+[Cafe moba for App Insight](http://appinsight.cafemoba.com) is a lightweight logging & tracking library that provides app developers a customizable way to access, analyze, and visualize the ways users interact with their apps
 
 Installation
 ============
 
 ### From CocoaPods
 
+If you don't have CocoaPods installed already, do
+
+    [sudo] gem install cocoapods
+    pod setup
+
+then
+
+    pod repo add cafemoba https://github.com/cafemoba/Specs.git
+    cd AppInsightDemo
+    pod install
+    open AppInsightDemo.xcworkspace
+
+
 * Add `pod AppInsight` to your Podfile.
+* Add [cafemoba specs repo](https://github.com/cafemoba/Specs.git) by running `pod repo add cafemoba https://github.com/cafemoba/Specs.git` in Terminal
+* Do `pod install`
 * Add `#import <AppInsight/AppInsight.h>` to your _Prefix.pch_
 
 ### Manually
@@ -17,16 +31,19 @@ Installation
 * Drag **AppInsight.framework** to your Frameworks grouping within XCode.
 * Add `#import <AppInsight/AppInsight.h>` to your _Prefix.pch_
 
-Usage
-=====
+Sample Usage
+============
 
-(see sample XCode project [AppInsightDemo](https://github.com/cafemoba/AppInsightDemo))
+You can see and play with sample log messages we have setup in the AppInsightDemo Xcode project. You'll need to register with [AppInsight](https//appinsight.cafemoba.com) and obtain API Key. After you do, replace the value of **AppInsight** key in _AppInsightDemo-Info.plist_.
+
+You should be able to build and run the demo project in XCode simulator now.
+
 
 Essentially there are three ways to log.
 
 ### Simple logging
 
-To log network status change with [AFNetworking](https://github.com/AFNetworking/AFNetworking) you would do something like:
+For example, to log network status change with [AFNetworking](https://github.com/AFNetworking/AFNetworking) you would do something like:
 
     - (void)networkStatusChanged:(AFNetworkReachabilityStatus)status
     {
