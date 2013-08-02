@@ -17,11 +17,11 @@ FOUNDATION_EXPORT void PVActivityLog(const char* file, const char* function, NSU
  
  For simple logging you can use
  
-     AI_Log(@"Any NSString")
+     AI_LogTag(@"Search", @"Search string")
  
  or
  
-     AI_Log([NSString @"Any %@ NSString", @"format"])
+     AI_LogTag(@"Search", @"%@", @"Search string")
  
  If you wish to time parts of the code, you may want to use AI_LogTag and AI_StopTagTimer.
  
@@ -38,6 +38,5 @@ FOUNDATION_EXPORT void PVActivityLog(const char* file, const char* function, NSU
 
  */
 
-#define AI_Log(...)   PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", @"NO TAG", YES, __VA_ARGS__)
 #define AI_LogTag(tag, ...) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, YES, __VA_ARGS__)
 #define AI_LogTagStopTimer(tag, ...) PVActivityLog(__FILE__, __PRETTY_FUNCTION__, __LINE__, @"Info", tag, NO, __VA_ARGS__)
