@@ -34,7 +34,7 @@ then
 Sample Usage
 ============
 
-You can see and play with sample log messages we have setup in the AppInsightDemo Xcode project. You'll need to register with [AppInsight](https//appinsight.cafemoba.com) and obtain API Key. After you do, replace the value of **AppInsight** key in _AppInsightDemo-Info.plist_.
+You can see and play with sample log messages we have setup in the AppInsightDemo Xcode project. You'll need to register with [AppInsight](https://appinsight.cafemoba.com) and obtain API Key. After you do, replace the value of **AppInsight** key in _AppInsightDemo-Info.plist_.
 
 You should be able to build and run the demo project in XCode simulator now.
 
