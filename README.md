@@ -3,33 +3,41 @@ AppInsight-for-iOS
 
 [Cafe moba for App Insight](http://appinsight.cafemoba.com) is a lightweight logging & tracking library that provides app developers a customizable way to access, analyze, and visualize the ways users interact with their apps
 
+Registration
+============
+
+Visit [https://appinsight.cafemoba.com](https://appinsight.cafemoba.com) and register an account. This will give you access to an API Key. You will need this later.
+
 Installation
 ============
 
 ### From CocoaPods
 
-If you don't have CocoaPods installed already, do
+If you don't have CocoaPods installed already (see [http://cocoapods.org/] (http://cocoapods.org/) for how to get started), do
 
     [sudo] gem install cocoapods
     pod setup
 
-then
+then perform the following steps:
 
-    pod repo add cafemoba https://github.com/cafemoba/Specs.git
-    cd AppInsightDemo
-    pod install
-    open AppInsightDemo.xcworkspace
+* Add `pod AppInsight` and `pod AFNetworking` to your Podfile. The following is a sample Podfile that you can use:
 
+```
+platform :ios, '6.0'
+pod 'AFNetworking', '= 1.3.1'
+pod 'AppInsight',   '>= 0.0.8'
+```
 
-* Add `pod AppInsight` to your Podfile.
 * Add [cafemoba specs repo](https://github.com/cafemoba/Specs.git) by running `pod repo add cafemoba https://github.com/cafemoba/Specs.git` in Terminal
 * Do `pod install`
 * Add `#import <AppInsight/AppInsight.h>` to your _Prefix.pch_
+* Modify the project's Info.plist by adding a new key value pair of 'AppInsight' and the API Key provided upon registration. If you are trying out the AppInsightDemo then just change the value of the 'AppInsight' key.
 
 ### Manually
 
 * Drag **AppInsight.framework** to your Frameworks grouping within XCode.
 * Add `#import <AppInsight/AppInsight.h>` to your _Prefix.pch_
+* Modify the project's Info.plist by adding a new key value pair of 'AppInsight' and the API Key provided upon registration. If you are trying out AppInsightDemo then just change the value of the 'AppInsight' key.
 
 Sample Usage
 ============
