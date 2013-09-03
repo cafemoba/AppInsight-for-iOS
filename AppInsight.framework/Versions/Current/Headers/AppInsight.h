@@ -33,7 +33,7 @@
 FOUNDATION_EXPORT void PVActivityLog(const char* file, const char* function, NSUInteger line, NSString* type, NSString *tag, BOOL shouldStartTimer, NSString* message, ...);
 
 /**
- After drag and dropping PVLogger.framework to your project add
+ After drag and dropping AppInsight.framework to your project add
  
      #import <AppInsight/AppInsight.h>
  
